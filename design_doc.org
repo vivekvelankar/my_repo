@@ -1,0 +1,44 @@
+* Design Doc
+** Overview
+   This is the first version of image sorter/pruner. It will enable
+   the user to identify duplicate photos from a Media and prune them.
+** Requirements
+   - Support all image formats.
+   - Support sorting based on date/alphabetically.
+   - Identify duplicate photos based on SHA1 hash.
+   - Either delete or move the duplicates to a separate directory.
+   - Dont traverse links, soft or hard.
+   - Minimum speed=10MBps. Avg photo size = 500kB, so 20photos per
+     seconds processing.
+** Nice to haves
+   - Should be able to identify the almost similar photos as well.
+     Investigate this.
+   - Should be able to Index photos based on folder names.
+** Detailed Design
+   With the easy access to mobiles and cameras(and whatsapp too :P), we
+   have lots of photos on any storage media like Hard disk, pen drive,etc.
+   Often, we copy these photos from multiple friends or sources like
+   whatsapp/facebook. While doing that, generally we just copy them,
+   thereby having multiple copies of the same photo. Its impractical to scan
+   the folders again for those duplicates. This utility tries to solve that
+   problem.
+** Modules
+  - GUI.
+  - Image Processor.
+** Stories
+   - Given a location, fetch the list of images with directory structure.
+   - Create a hashmap with duplicate images going to same bucket.
+   - Provide the list of duplicate images to the user 1 by one.
+   - Delete/move the duplicates as specified by the user.
+   - Add performance metrics to the tool.
+** APIs
+** Unit Testing
+   Test it with different image workloads like-
+   - Folder with only images.
+   - Folder with images and folders of images.
+   - Folder with no images.
+   - Folder with links to images(soft/hard).
+** Performance Testing
+   - For each of the above test, record the timings.
+** Future Work/TODOs
+** Learnings

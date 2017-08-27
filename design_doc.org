@@ -25,15 +25,16 @@
 ** Modules
   - GUI.
   - Image Processor.
-** Stories[0/5]
-   - [ ] Given a location, fetch the list of images with directory structure.[0/3]
-     + [ ] Write a program to read the directory.
-     + [ ] Modify it to read the images from that directory.
-     + [ ] Create the hierarchy of the images.
-   - [ ] Create a hashmap with duplicate images going to same bucket.[0/2]
-     + [ ] Traverse the hierarchy of images and create a hashmap, st
-           [key, value]  = [sha1, list of image locations]
+** Stories[1/6]
+   - [X] Given a location, fetch the list of images with directory structure.[3/3]
+     + [X] Write a program to read the directory.
+     + [X] Modify it to read the images from that directory.
+     + [X] Create the hierarchy of the images.
+   - [-] Create a hashmap with duplicate images going to same bucket.[1/2]
+     + [X] Traverse the hierarchy of images and create a hashmap, st
+           [key, value]  = [md5, list of image locations]
      + [ ] Write this info to a file in json format.
+   - [ ] Make the image map generatiom multi threaded.
    - [ ] Provide the list of duplicate images to the user 1 by one.
    - [ ] Delete/move the duplicates as specified by the user.
    - [ ] Add performance metrics to the tool.

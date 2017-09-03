@@ -87,3 +87,21 @@ string ReadFiles::get_file_key(string filepath) {
        << filestat.st_size <<  " \n\tkey " << md5 << endl;
   return md5;
 }
+
+void ReadFiles::dump_map(const std::unordered_multimap<std::string, std::string>& file_map) {
+  fstream map_file(MAP_FILE_NAME, std::ios::out|std::ios::binary);
+
+  if (map_file.is_open()) {
+    string prev_key;
+    for (auto pair : file_map) {
+      string cur_key = pair.first;
+      if (!prev_key.empty() && prev_key == cur_key) {
+        map_file << "DUPLICATE " << pair.second << endl;
+      } else {
+        map_file << pair.second << endl;
+        prev_key = pair.first;
+      }
+      //map_file << pair.second << endl;
+    }
+  }
+}

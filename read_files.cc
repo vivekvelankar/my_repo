@@ -90,18 +90,24 @@ string ReadFiles::get_file_key(string filepath) {
 
 void ReadFiles::dump_map(const std::unordered_multimap<std::string, std::string>& file_map) {
   fstream map_file(MAP_FILE_NAME, std::ios::out|std::ios::binary);
-
+  long int total_saving = 0;
   if (map_file.is_open()) {
     string prev_key;
     for (auto pair : file_map) {
       string cur_key = pair.first;
       if (!prev_key.empty() && prev_key == cur_key) {
         map_file << "DUPLICATE " << pair.second << endl;
+        struct stat filestat;
+        stat(pair.second.c_str(), &filestat);
+        total_saving += filestat.st_size;
       } else {
         map_file << pair.second << endl;
         prev_key = pair.first;
       }
-      //map_file << pair.second << endl;
     }
+  } else {
+    cout << "MAP file creation failed.";
+    exit(1);
   }
+  cout << "You can save " << total_saving/1024/1024 << "MBs";
 }

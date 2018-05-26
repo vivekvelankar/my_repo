@@ -38,6 +38,9 @@
    - [ ] Provide the list of duplicate images to the user 1 by one.
    - [ ] Delete/move the duplicates as specified by the user.
    - [ ] Add performance metrics to the tool.
+   - [ ] Add logging levels.
+   - [ ] Create dirs and update cmake
+   - [ ] Test with big dataset.
 ** APIs
 ** Unit Testing
    Test it with different image workloads like-
